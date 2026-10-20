@@ -1,4 +1,4 @@
-# PoPo.meme — Hackathon Submission Pack
+# PoPo.meme
 
 > **AI-native IP incubation & trading platform.**
 > Anyone can launch a meme/IP coin on a bonding curve; when it graduates the
