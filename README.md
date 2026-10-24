@@ -120,12 +120,6 @@ authorized by an EIP-712 signature the function verifies with `ecrecover`
 
 **Media** — Supabase Storage + Service-Worker/WebRTC P2P CDN offload.
 
-**Networks** — Multi-chain by design (URL-routed): the same unforked codebase is
-deployed across X Layer mainnet, Sei mainnet/testnet, Mantle Sepolia,
-Robinhood Chain testnet, **Arbitrum Sepolia (421614)**, Arc testnet and
-**Monad Testnet (chainId 10143)**, plus a local Hardhat node. The read path and write path are explicitly de-synchronized to
-survive wallet chain-switch lag.
-
 > **Arbitrum Sepolia deployment (2026-10-16):** the full PoPoApp Diamond — all 19
 > facets, 209 selectors, `0xa57ba665456d23aAC98Ebf688d2Bf32fd58810F7` — plus
 > USDP/PPT/PFT, Create2Deployer, CreatorFeeHookDefault and EpisodeBuybackRouter
@@ -133,13 +127,6 @@ survive wallet chain-switch lag.
 > 14,000-$P graduation threshold, quoteId = 1, ops wallet ROLE_4 + ROLE_90). Address table,
 > verification commands and reproduce steps:
 > [`docs/2026-10-16-arbitrum-sepolia-deployment.md`](./docs/2026-10-16-arbitrum-sepolia-deployment.md).
-
-> **Monad Testnet deployment (2026-12-08):** the full PoPoApp Diamond — all 19
-> facets, `0xa08e66FD7f19C22Fe44928518DFe6A867B0E4c07` — plus USDP/PPT/PFT,
-> Create2Deployer, CreatorFeeHookDefault and EpisodeBuybackRouter are live and
-> verified over public RPC (`facets()` = 19, 14,000-$P graduation threshold,
-> quoteId = 1, ops wallet ROLE_4/90). Address table, verification commands and
-> reproduce steps: [`docs/2026-12-08-monad-testnet-deployment.md`](./docs/2026-12-08-monad-testnet-deployment.md).
 
 </details>
 
