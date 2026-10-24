@@ -52,7 +52,7 @@ Last verified result set:
 | Curve platform fee / creator fee / AMM fee | `100` / `50` / `25` bps |
 | Quote token id | `1` |
 | Deployer roles | `ROLE_90` + `ROLE_4` |
-| Ops wallet `0x85A6…D598` | `ROLE_4` |
+| Ops wallet `0x85A6…D598` | `ROLE_4` + `ROLE_90` (granted 2026-10-24, tx [`0xedb551…0197`](https://sepolia.arbiscan.io/tx/0xedb551dadc79b89b5290d6438e482d70b12869c3c6307f99cc258a37564e0197)) |
 | EIP-712 domain | `PoPo.meme`, version `1`, chainId `0x66eee` |
 
 ## 3. Reproduce the deployment
@@ -76,6 +76,7 @@ Data files consumed by the deploy scripts:
 Steps `02..09` end state:
 
 - `02` bulk `ROLE_4` grant (deployer + ops)
+- post-deploy `scripts/grant-arb-sepolia-admin-role.ts` — grants the ops wallet `ROLE_90` (super admin) on top of the `ROLE_4` that step `02` already covers
 - `03` USDP registered as quote `id = 1`
 - `04` `setConfig`: 14,000 $P graduation threshold, 2 $P create fee, 100 bps curve platform fee, 50 bps creator fee, 25 bps AMM fee
 - `05` CreatorFeeHook CREATE2 deploy; `defaultGraduationHook` stays `address(0)`
@@ -96,5 +97,5 @@ Steps `02..09` end state:
 ## 5. Known deviations from mainnet intent
 
 - `defaultGraduationHook` is left unset on testnet (`WIRED_DEFAULT_HOOK` not enabled), so graduation does not auto-deploy a hook.
-- The ops wallet carries `ROLE_4` but not `ROLE_90`; the deployer EOA is the only super admin on this deployment.
+- The deployer EOA and the ops wallet `0x85A6…D598` both hold `ROLE_90` (super admin) and `ROLE_4`. If a future deployment is replayed from the deploy step, remember to re-grant `ROLE_90` to the ops wallet — `admin-role-b.json` only covers `ROLE_4`.
 - Testnet `$P` is minted by the faucet flow (`testnet-faucet-claim`), not sold.

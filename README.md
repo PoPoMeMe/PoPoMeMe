@@ -127,7 +127,7 @@ survive wallet chain-switch lag.
 > facets, 209 selectors, `0xa57ba665456d23aAC98Ebf688d2Bf32fd58810F7` — plus
 > USDP/PPT/PFT, Create2Deployer, CreatorFeeHookDefault and EpisodeBuybackRouter
 > are live on chainId `421614` and verified over public RPC (`facets()` = 19,
-> 14,000-$P graduation threshold, quoteId = 1, ops wallet ROLE_4). Address table,
+> 14,000-$P graduation threshold, quoteId = 1, ops wallet ROLE_4 + ROLE_90). Address table,
 > verification commands and reproduce steps:
 > [`docs/2026-10-16-arbitrum-sepolia-deployment.md`](./docs/2026-10-16-arbitrum-sepolia-deployment.md).
 
