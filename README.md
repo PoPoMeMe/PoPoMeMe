@@ -40,8 +40,6 @@ Click any address to open it on that chain's explorer.
 **Notes**
 
 - The **same unforked** EIP-2535 Diamond / ERC-6909 vault / v4-style PoolManager code ships unchanged on every chain above. On chains with a low per-tx gas ceiling (Arc, Base Sepolia, HyperEVM, Ethereum Sepolia, Tempo) the Diamond is assembled with a small constructor core plus additive `diamondCut` batches rather than one giant deploy.
-- Arc Testnet additionally runs a separate `PPTSaleApp` sale/AMM diamond at [`0xBaaB…a089`](https://explorer.testnet.arc.io/address/0xBaaBb1197329D7d9db5d332e6E0308EB46c2a089).
-- Arbitrum Sepolia shows the **same addresses as Base Sepolia** on purpose: one deployer EOA with an identical nonce sequence, and `CREATE` addresses are `keccak256(sender, nonce)`. They are independent contract instances on chainId `421614` and `84532` — do not cross-wire them.
 - Addresses are the canonical single source of truth in `app/supabase/functions/_shared/chains-registry.ts` (frontend mirror `app/src/lib/contracts-registry.ts`). Localhost (`31337`) uses ephemeral addresses and is intentionally omitted.
 
 </details>
