@@ -28,15 +28,6 @@ Click any address to open it on that chain's explorer.
 | Robinhood Chain Testnet | 46630 | [`0xCA1E…53C2`](https://explorer.testnet.chain.robinhood.com/address/0xCA1E405289335507782ad322d67916e7517953C2) | [`0x7423…C2AE`](https://explorer.testnet.chain.robinhood.com/address/0x74231829420B9A65BD83F6efD10FD266DB84C2AE) |
 | Arbitrum Sepolia | 421614 | [`0xa57b…10F7`](https://sepolia.arbiscan.io/address/0xa57ba665456d23aAC98Ebf688d2Bf32fd58810F7) | [`0x0e87…8A99`](https://sepolia.arbiscan.io/address/0x0e872d6867323921489a23FF4572a7a749178A99) |
 
-<!--
-| Monad Testnet | 10143 | [`0xa08e…4c07`](https://testnet.monadexplorer.com/address/0xa08e66FD7f19C22Fe44928518DFe6A867B0E4c07) | [`0xf8D4…C662`](https://testnet.monadexplorer.com/address/0xf8D44b7682fe1f2D3d5089DCA3510D830675C662) |
-| Arc Testnet | 5042002 | [`0x34B4…D627`](https://explorer.testnet.arc.io/address/0x34B4E1647ca6A049ED5876c5c71A8874b97bD627) | [`0x4dB1…4aB3`](https://explorer.testnet.arc.io/address/0x4dB1Ac5457E26db7530358378E576994d2574aB3) |
-| Base Sepolia | 84532 | [`0xa57b…10F7`](https://sepolia.basescan.org/address/0xa57ba665456d23aAC98Ebf688d2Bf32fd58810F7) | [`0x0e87…8A99`](https://sepolia.basescan.org/address/0x0e872d6867323921489a23FF4572a7a749178A99) |
-| HyperEVM Testnet | 998 | [`0x1CEB…d7Bd`](https://app.hyperliquid-testnet.xnode.l4n.xyz/address/0x1CEB0c21B999D55A89828713258f788EA649d7Bd) | [`0x586c…7913`](https://app.hyperliquid-testnet.xnode.l4n.xyz/address/0x586c9619d38d5B1E66FB235A3a887136990e7913) |
-| Ethereum Sepolia | 11155111 | [`0x240B…f2CB`](https://sepolia.etherscan.io/address/0x240B7D86F6D3B89B6f6C5f5D34Cff4dE0255f2CB) | [`0x0067…3648`](https://sepolia.etherscan.io/address/0x00675E9aA5B05980ea74c35da555A4E0dC903648) |
-| Tempo Moderato | 42431 | [`0x0067…3648`](https://explore.testnet.tempo.xyz/address/0x00675E9aA5B05980ea74c35da555A4E0dC903648) | [`0x35Db…f0C4`](https://explore.testnet.tempo.xyz/address/0x35Db7408b922CAd9f158cE0155008Af95aBaf0C4) |
--->
-
 **Notes**
 
 - The **same unforked** EIP-2535 Diamond / ERC-6909 vault / v4-style PoolManager code ships unchanged on every chain above. On chains with a low per-tx gas ceiling (Arc, Base Sepolia, HyperEVM, Ethereum Sepolia, Tempo) the Diamond is assembled with a small constructor core plus additive `diamondCut` batches rather than one giant deploy.
@@ -69,7 +60,7 @@ kept, surrounding boilerplate removed) plus a "why it matters" note.
 │   └── app/                      # TypeScript / React excerpts
 ├── diagrams/architecture.md      # mermaid diagrams (render on GitHub/markdown)
 ├── bounty-submissions/           # Monad Metropolis bounty writeups (Privy/Envio/Alchemy/MetaMask)
-├── envio-indexer/                # Envio HyperIndex v2 indexer for Monad testnet (real, runnable)
+├── envio-indexer/                # Envio HyperIndex v2 indexer for testnet (real, runnable)
 ├── metamask-agent-plugin/        # `mm popo …` Agent Wallet plugin (8 commands, real on-chain calls)
 └── docs/                         # Monad deployment facts + bounty execution plan
 ```
@@ -105,7 +96,7 @@ fan buys episode access ($P)
 </details>
 
 <details>
-<summary><strong>3. Tech stack</strong> — Solidity/Diamond · React 19/viem/Privy · Supabase · multi-chain (incl. Monad testnet)</summary>
+<summary><strong>3. Tech stack</strong> — Solidity/Diamond · React 19/viem/Privy · Supabase </summary>
 
 **Smart contracts** — Solidity `0.8.20`, Hardhat, EIP-2535 Diamond pattern.
 
@@ -251,7 +242,7 @@ Built specifically for the Monad hackathon (execution status:
 
 | Artifact | What it is |
 | --- | --- |
-| [`envio-indexer/`](./envio-indexer/) | **Envio HyperIndex v2** real-time indexer for PoPo.meme on Monad testnet: 8 events (Hatch `TokenCreated`/`Buy`/`Sell`/`BondingCurveComplete` + prediction `Buy`/`Sell`/`BuyBatch`/`SellBatch`) → 7 typed entities, GraphQL/REST API. Both facets share one Diamond address. Runnable (`npm i && envio dev`). |
+| [`envio-indexer/`](./envio-indexer/) | **Envio HyperIndex v2** real-time indexer for PoPo.meme on testnet: 8 events (Hatch `TokenCreated`/`Buy`/`Sell`/`BondingCurveComplete` + prediction `Buy`/`Sell`/`BuyBatch`/`SellBatch`) → 7 typed entities, GraphQL/REST API. Both facets share one Diamond address. Runnable (`npm i && envio dev`). |
 | [`metamask-agent-plugin/`](./metamask-agent-plugin/) | **MetaMask Agent Wallet** plugin `mm-plugin-popo` with 8 `mm popo …` commands — quote/trade/markets/market/position/predict/vault/deposit — wired to the Monad Diamond with real bonding-curve math and typed contract calls. |
 | [`bounty-submissions/`](./bounty-submissions/) | Submission writeups: Privy (P0, embedded-wallet-only signing), Envio, Alchemy Supernode/Enhanced APIs, MetaMask Agent Wallet. |
 
