@@ -27,12 +27,15 @@ Click any address to open it on that chain's explorer.
 |---|---|---|---|
 | Robinhood Chain Testnet | 46630 | [`0xCA1E…53C2`](https://explorer.testnet.chain.robinhood.com/address/0xCA1E405289335507782ad322d67916e7517953C2) | [`0x7423…C2AE`](https://explorer.testnet.chain.robinhood.com/address/0x74231829420B9A65BD83F6efD10FD266DB84C2AE) |
 | Arbitrum Sepolia | 421614 | [`0xa57b…10F7`](https://sepolia.arbiscan.io/address/0xa57ba665456d23aAC98Ebf688d2Bf32fd58810F7) | [`0x0e87…8A99`](https://sepolia.arbiscan.io/address/0x0e872d6867323921489a23FF4572a7a749178A99) |
+
+<!--
 | Monad Testnet | 10143 | [`0xa08e…4c07`](https://testnet.monadexplorer.com/address/0xa08e66FD7f19C22Fe44928518DFe6A867B0E4c07) | [`0xf8D4…C662`](https://testnet.monadexplorer.com/address/0xf8D44b7682fe1f2D3d5089DCA3510D830675C662) |
 | Arc Testnet | 5042002 | [`0x34B4…D627`](https://explorer.testnet.arc.io/address/0x34B4E1647ca6A049ED5876c5c71A8874b97bD627) | [`0x4dB1…4aB3`](https://explorer.testnet.arc.io/address/0x4dB1Ac5457E26db7530358378E576994d2574aB3) |
 | Base Sepolia | 84532 | [`0xa57b…10F7`](https://sepolia.basescan.org/address/0xa57ba665456d23aAC98Ebf688d2Bf32fd58810F7) | [`0x0e87…8A99`](https://sepolia.basescan.org/address/0x0e872d6867323921489a23FF4572a7a749178A99) |
 | HyperEVM Testnet | 998 | [`0x1CEB…d7Bd`](https://app.hyperliquid-testnet.xnode.l4n.xyz/address/0x1CEB0c21B999D55A89828713258f788EA649d7Bd) | [`0x586c…7913`](https://app.hyperliquid-testnet.xnode.l4n.xyz/address/0x586c9619d38d5B1E66FB235A3a887136990e7913) |
 | Ethereum Sepolia | 11155111 | [`0x240B…f2CB`](https://sepolia.etherscan.io/address/0x240B7D86F6D3B89B6f6C5f5D34Cff4dE0255f2CB) | [`0x0067…3648`](https://sepolia.etherscan.io/address/0x00675E9aA5B05980ea74c35da555A4E0dC903648) |
 | Tempo Moderato | 42431 | [`0x0067…3648`](https://explore.testnet.tempo.xyz/address/0x00675E9aA5B05980ea74c35da555A4E0dC903648) | [`0x35Db…f0C4`](https://explore.testnet.tempo.xyz/address/0x35Db7408b922CAd9f158cE0155008Af95aBaf0C4) |
+-->
 
 **Notes**
 
