@@ -26,6 +26,7 @@ Click any address to open it on that chain's explorer.
 | Chain | Chain ID | PoPoApp Diamond (all facets) | $P token (USDPApp) |
 |---|---|---|---|
 | Robinhood Chain Testnet | 46630 | [`0xCA1E…53C2`](https://explorer.testnet.chain.robinhood.com/address/0xCA1E405289335507782ad322d67916e7517953C2) | [`0x7423…C2AE`](https://explorer.testnet.chain.robinhood.com/address/0x74231829420B9A65BD83F6efD10FD266DB84C2AE) |
+| Arbitrum Sepolia | 421614 | [`0xa57b…10F7`](https://sepolia.arbiscan.io/address/0xa57ba665456d23aAC98Ebf688d2Bf32fd58810F7) | [`0x0e87…8A99`](https://sepolia.arbiscan.io/address/0x0e872d6867323921489a23FF4572a7a749178A99) |
 | Monad Testnet | 10143 | [`0xa08e…4c07`](https://testnet.monadexplorer.com/address/0xa08e66FD7f19C22Fe44928518DFe6A867B0E4c07) | [`0xf8D4…C662`](https://testnet.monadexplorer.com/address/0xf8D44b7682fe1f2D3d5089DCA3510D830675C662) |
 | Arc Testnet | 5042002 | [`0x34B4…D627`](https://explorer.testnet.arc.io/address/0x34B4E1647ca6A049ED5876c5c71A8874b97bD627) | [`0x4dB1…4aB3`](https://explorer.testnet.arc.io/address/0x4dB1Ac5457E26db7530358378E576994d2574aB3) |
 | Base Sepolia | 84532 | [`0xa57b…10F7`](https://sepolia.basescan.org/address/0xa57ba665456d23aAC98Ebf688d2Bf32fd58810F7) | [`0x0e87…8A99`](https://sepolia.basescan.org/address/0x0e872d6867323921489a23FF4572a7a749178A99) |
@@ -37,6 +38,7 @@ Click any address to open it on that chain's explorer.
 
 - The **same unforked** EIP-2535 Diamond / ERC-6909 vault / v4-style PoolManager code ships unchanged on every chain above. On chains with a low per-tx gas ceiling (Arc, Base Sepolia, HyperEVM, Ethereum Sepolia, Tempo) the Diamond is assembled with a small constructor core plus additive `diamondCut` batches rather than one giant deploy.
 - Arc Testnet additionally runs a separate `PPTSaleApp` sale/AMM diamond at [`0xBaaB…a089`](https://explorer.testnet.arc.io/address/0xBaaBb1197329D7d9db5d332e6E0308EB46c2a089).
+- Arbitrum Sepolia shows the **same addresses as Base Sepolia** on purpose: one deployer EOA with an identical nonce sequence, and `CREATE` addresses are `keccak256(sender, nonce)`. They are independent contract instances on chainId `421614` and `84532` — do not cross-wire them.
 - Addresses are the canonical single source of truth in `app/supabase/functions/_shared/chains-registry.ts` (frontend mirror `app/src/lib/contracts-registry.ts`). Localhost (`31337`) uses ephemeral addresses and is intentionally omitted.
 
 </details>
@@ -117,9 +119,17 @@ authorized by an EIP-712 signature the function verifies with `ecrecover`
 
 **Networks** — Multi-chain by design (URL-routed): the same unforked codebase is
 deployed across X Layer mainnet, Sei mainnet/testnet, Mantle Sepolia,
-Robinhood Chain testnet, Arc testnet and **Monad Testnet (chainId 10143)**, plus a
-local Hardhat node. The read path and write path are explicitly de-synchronized to
+Robinhood Chain testnet, **Arbitrum Sepolia (421614)**, Arc testnet and
+**Monad Testnet (chainId 10143)**, plus a local Hardhat node. The read path and write path are explicitly de-synchronized to
 survive wallet chain-switch lag.
+
+> **Arbitrum Sepolia deployment (2026-10-16):** the full PoPoApp Diamond — all 19
+> facets, 209 selectors, `0xa57ba665456d23aAC98Ebf688d2Bf32fd58810F7` — plus
+> USDP/PPT/PFT, Create2Deployer, CreatorFeeHookDefault and EpisodeBuybackRouter
+> are live on chainId `421614` and verified over public RPC (`facets()` = 19,
+> 14,000-$P graduation threshold, quoteId = 1, ops wallet ROLE_4). Address table,
+> verification commands and reproduce steps:
+> [`docs/2026-10-16-arbitrum-sepolia-deployment.md`](./docs/2026-10-16-arbitrum-sepolia-deployment.md).
 
 > **Monad Testnet deployment (2026-12-08):** the full PoPoApp Diamond — all 19
 > facets, `0xa08e66FD7f19C22Fe44928518DFe6A867B0E4c07` — plus USDP/PPT/PFT,
